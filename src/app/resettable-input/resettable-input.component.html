@@ -1,0 +1,18 @@
+<mat-form-field>
+  <mat-label>Phone</mat-label>
+  <input
+    matInput
+    type="text"
+    placeholder="(000) 000-0000"
+    data-qa-id="Phone"
+    [formControl]="control"
+  />
+  <mat-error *ngIf="control.hasError('invalidPhoneDigits')"
+    >This field is required
+  </mat-error>
+</mat-form-field>
+
+<!-- <mat-form-field><input matInput type="text" [formControl]="control"></mat-form-field> <button matButton (click)="clearInput()">clear</button> -->
+<button matButton (click)="clearInput()">clear</button>
+
+touched: {{ this.control.touched }}

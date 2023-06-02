@@ -1,0 +1,23 @@
+<hr />
+<h4>{{title}} properties</h4>
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let p of formProperties">
+        {{ p }}
+      </th>
+      <th>errors</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td *ngFor="let p of formProperties">
+        {{ formPropertyValue(form, p) }}
+      </td>
+      <td>
+        {{ form?.errors | json }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<s-code-block title="title">{{ form.value | json }}</s-code-block>

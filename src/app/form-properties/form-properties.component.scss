@@ -1,0 +1,66 @@
+// @use "https://cdn.rawgit.com/google/code-prettify/master/styles/desert.css";
+
+:host {
+  font-size: 0.8rem;
+}
+
+table {
+  tr {
+    td,
+    th {
+      padding: 0.5rem;
+    }
+
+    th {
+      border-color: grey;
+      border-style: solid;
+      border-width: 0;
+      border-bottom-width: 1px;
+      border-left-width: 1px;
+
+      &:first-child {
+        border-left-width: 0;
+      }
+    }
+  }
+  border: 1px solid grey;
+}
+
+$lightGray: #fafafa;
+$medBlue: #9baecf;
+$char: #292929;
+
+body {
+  width: 50%;
+  margin: 0 auto;
+  @media (max-width: 650px) {
+    width: 75%;
+  }
+  @media (max-width: 430px) {
+    width: 100%;
+  }
+}
+
+code, pre {
+  font-family: 'Source Code Pro';
+  background: $char;
+  color: $lightGray;
+  font-size: 16px;
+  padding: 0;
+  padding: 10px;
+  &:before {
+    display: block;
+    width: calc(100%);
+    margin-left: -3px;
+    margin-top: -3px;
+    padding: 3px;
+    text-transform: uppercase;
+    content: "Value";
+  }
+  .o {
+    color: orange;
+  }
+  .w {
+    color: white;
+  }
+}

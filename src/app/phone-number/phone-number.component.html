@@ -1,0 +1,19 @@
+<mat-form-field>
+  <mat-label>Phone</mat-label>
+  <input
+    matInput
+    type="text"
+    placeholder="(000) 000-0000"
+    data-qa-id="Phone"
+    [formControl]="phone"
+    (blur)="onTouched()"
+    maxlength="14"
+  />
+  <mat-error *ngIf="phone.hasError('invalidPhoneDigits')"
+    >This field is required
+  </mat-error>
+  <mat-error *ngIf="phone.hasError('wrongFormat')"
+    >Invalid format
+  </mat-error>
+</mat-form-field>
+<s-form-properties [form]="phone" title="phone-number.component"></s-form-properties>

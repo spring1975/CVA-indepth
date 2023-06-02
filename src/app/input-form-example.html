@@ -1,0 +1,42 @@
+<form class="example-form" [formGroup]="exampleForm">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Company (disabled)</mat-label>
+    <input matInput formControlName="company" />
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>First name</mat-label>
+          <input matInput formControlName="firstName" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName" />
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <s-address-control formControlName="address"></s-address-control>
+
+  <s-phone-number formControlName="singlePhone"></s-phone-number>
+  <br />
+  <s-phone-number-array formControlName="phoneArray"></s-phone-number-array>
+</form>
+<button
+  mat-raised-button
+  color="primary"
+  type="button"
+  (click)="patchSomeValues()"
+>
+  Patch values
+</button>
+<s-form-properties [form]="exampleForm" title="Parent Form"></s-form-properties>
+
+<!-- Copyright 2023 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->

@@ -1,0 +1,16 @@
+<button mat-raised-button type="button" color="primary" (click)="addPhone()">
+  Add
+</button>
+
+<ul #phoneArrayList>
+  <li
+    *ngFor="let phone of phoneArray.controls; let i = index; trackBy: trackByFn"
+  >
+    <button (click)="removePhone(i)">remove</button> &nbsp;
+    <s-phone-number [formControl]="phoneArray.controls[i]"></s-phone-number>
+  </li>
+</ul>
+<s-form-properties
+  [form]="phoneArray"
+  title="phone-number-array.component"
+></s-form-properties>
