@@ -7,7 +7,7 @@
     *ngFor="let phone of phoneArray.controls; let i = index; trackBy: trackByFn"
   >
     <button (click)="removePhone(i)">remove</button> &nbsp;
-    <s-phone-number [formControl]="phoneArray.controls[i]"></s-phone-number>
+    <s-phone-number-control [formControl]="phoneArray.controls[i]"></s-phone-number-control>
   </li>
 </ul>
 <s-form-properties

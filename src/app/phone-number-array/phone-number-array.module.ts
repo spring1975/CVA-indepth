@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormPropertiesModule } from '../form-properties/form-properties.module';
-import { PhoneNumberModule } from '../phone-number/phone-number.module';
+import { PhoneNumberModule } from '../phone-number-control/phone-number-control.module';
 import { PhoneNumberArrayComponent } from './phone-number-array.component';
 
 @NgModule({

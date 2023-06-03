@@ -10,23 +10,24 @@ import { map, distinctUntilChanged, tap, throttleTime, debounceTime } from 'rxjs
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { formatAsUSPhoneNumber } from '../utilities';
 import { PhoneNumberValidator } from '../validators/phone-number/phone-number.validator';
+import equals from 'fast-deep-equal';
 
 @UntilDestroy()
 @Component({
-  selector: 's-phone-number',
-  templateUrl: './phone-number.component.html',
-  styleUrls: ['./phone-number.component.scss'],
+  selector: 's-phone-number-control',
+  templateUrl: './phone-number-control.component.html',
+  styleUrls: ['./phone-number-control.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => PhoneNumberComponent),
+      useExisting: forwardRef(() => PhoneNumberControlComponent),
       multi: true,
     }
   ],
   // Still need to research why the view is funky with OnPush
   // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PhoneNumberComponent
+export class PhoneNumberControlComponent
   implements ControlValueAccessor
 {
 
@@ -45,7 +46,7 @@ export class PhoneNumberComponent
 
 
   writeValue(value?: number | string | null): void {
-    this.phone.setValue(this.displayFn(value), {
+    this.phone.setValue(this.formatPhoneNumberForDisplay(value), {
       emitEvent: false,
     });
   }
@@ -57,11 +58,11 @@ export class PhoneNumberComponent
     this.onChange = fn;
     this.phone.valueChanges
       .pipe(
-        debounceTime(100),
-        distinctUntilChanged((x, y) => JSON.stringify(x) === JSON.stringify(y)),
+        tap(console.log),
+        distinctUntilChanged(equals),
         tap(() => this.parentForm?.markAsDirty()),
         tap((value) => this.writeValue(value)),
-        map((v) => this.formatPhoneNumberForStorage(v)),
+        map((v) => this.formatPhoneNumberForOutput(v)),
         untilDestroyed(this)
       )
       .subscribe(this.onChange);
@@ -88,7 +89,7 @@ export class PhoneNumberComponent
   /**
    * Intended storage is numbers only
    */
-  private formatPhoneNumberForStorage(
+  private formatPhoneNumberForOutput(
     value: number | string | null
   ): number | null {
     const allDigits = `${value}`.replace(/\D/g, '').slice(0,10);
@@ -98,6 +99,6 @@ export class PhoneNumberComponent
   /**
    * Converts number to formated string for display
    */
-  private displayFn = (value?: string | number | null): string | null =>
+  private formatPhoneNumberForDisplay = (value?: string | number | null): string | null =>
     formatAsUSPhoneNumber(value);
 }

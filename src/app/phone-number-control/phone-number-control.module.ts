@@ -4,10 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormPropertiesModule } from '../form-properties/form-properties.module';
-import { PhoneNumberComponent } from './phone-number.component';
+import { PhoneNumberControlComponent } from './phone-number-control.component';
 
 @NgModule({
-  declarations: [PhoneNumberComponent],
+  declarations: [PhoneNumberControlComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -16,6 +16,6 @@ import { PhoneNumberComponent } from './phone-number.component';
     ReactiveFormsModule,
     FormPropertiesModule
   ],
-  exports: [PhoneNumberComponent],
+  exports: [PhoneNumberControlComponent],
 })
 export class PhoneNumberModule {}

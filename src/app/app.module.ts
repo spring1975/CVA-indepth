@@ -7,15 +7,14 @@ import {InputFormExample} from './input-form-example';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
-import { PhoneNumberModule } from './phone-number/phone-number.module';
-import { ResettableInputComponent } from './resettable-input/resettable-input.component';
+import { PhoneNumberModule } from './phone-number-control/phone-number-control.module';
 import { PhoneNumberArrayModule } from './phone-number-array/phone-number-array.module';
 import { FormPropertiesModule } from './form-properties/form-properties.module';
 import { CodeBlockModule } from './code-block/code-block.module';
 import { AddressControlModule } from './address/address-control.module';
 
 @NgModule({
-  declarations: [InputFormExample, ResettableInputComponent],
+  declarations: [InputFormExample],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
