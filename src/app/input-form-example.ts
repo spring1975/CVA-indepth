@@ -56,7 +56,7 @@ export class InputFormExample implements AfterViewInit, OnInit {
       state: null,
       postalCode: null,
     }),
-    singlePhone: this.fb.control<number | null>(null),
+    singlePhone: this.fb.control<number | null>(null, PhoneNumberValidator),
     phoneArray: this.fb.nonNullable.control<number[]>([], PhoneNumberValidator),
   });
 
